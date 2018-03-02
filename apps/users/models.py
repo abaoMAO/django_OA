@@ -1,35 +1,37 @@
 from django.contrib.auth.models import AbstractUser
-
-# Create your models here.
 from django.db import models
-from scores.models import Questionnaire
+
+from GZ_OA import settings
 
 
 class UserProfile(AbstractUser):
-    nick_name = models.CharField(max_length=50, verbose_name=u"昵称", default="")
-    birthday = models.DateField(verbose_name=u"生日", null=True, blank=True)
-    gender = models.CharField(max_length=6, choices=(("mule", u"男"), ("femule", u"女"), ("unknow", u"保密")), default="unknow")
-    address = models.CharField(max_length=100, default=u"")
+    employee_name = models.CharField(max_length=50, verbose_name="员工姓名", default="")
+    birthday = models.DateField(verbose_name="生日", null=True, blank=True)
+    gender = models.CharField(max_length=7,
+                              choices=(
+                                  ("mule", "男"),
+                                  ("fe_mule", "女"),
+                                  ("un_know", "保密")),
+                              default="un_know")
+    address = models.CharField(max_length=100, default="")
     mobile = models.CharField(max_length=11, null=True, blank=True)
-    # position = models.ForeignKey(Position)
-    # section = models.ForeignKey(Section)
-    # superior = models.ForeignKey(UserProfile)
+
+    position = models.OneToOneField('Position', on_delete=models.CASCADE, default="", null=True)
+    section = models.OneToOneField('Section', on_delete=models.CASCADE, default="", null=True)
+    superior = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default="", null=True)
 
     class Meta:
-        verbose_name = u"用户信息"
+        verbose_name = "员工信息"
         verbose_name_plural = verbose_name
 
-    def get_anonymous_name(self):
-        pass
-
     def __unicode__(self):
-        return self.username
+        return self.employee_name
 
 
 class Position(models.Model):
-    name = models.CharField(max_length=50, verbose_name=u"名称", null=False)
+    name = models.CharField(max_length=50, verbose_name=u"职位名称", null=False)
     describe = models.TextField(verbose_name="职位描述")
-    level = models.IntegerField(max_length=3, verbose_name=u"级别", null=False)
+    level = models.IntegerField(verbose_name=u"级别", null=False)
 
     class Meta:
         verbose_name = u"职位"
@@ -37,7 +39,7 @@ class Position(models.Model):
 
 
 class Section(models.Model):
-    name = models.CharField(max_length=50, verbose_name=u"名称", null=False)
+    name = models.CharField(max_length=50, verbose_name=u"部门名称", null=False)
     describe = models.TextField(verbose_name="部门描述")
 
     class Meta:
