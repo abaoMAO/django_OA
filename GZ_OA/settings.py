@@ -17,7 +17,7 @@ import sys
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
-sys.path.insert(0,os.path.join(BASE_DIR,'extra_apps'))
+sys.path.insert(0, os.path.join(BASE_DIR, 'extra_apps'))
 
 
 # Quick-start development settings - unsuitable for production
@@ -35,21 +35,23 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'users',
+    'scores',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'users',
-    'scores',
     'webpack_loader',
     'rest_framework',
 
-    'xadmin',
     'crispy_forms',
-    # 'reversion',
+    'xadmin',
+    'reversion',
+    'captcha',
 ]
+
 AUTH_USER_MODEL = "users.UserProfile"
 
 
@@ -136,7 +138,6 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-
 # 静态文件主目录
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'appfront/dist/static'),
