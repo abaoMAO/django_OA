@@ -1,30 +1,43 @@
-
-
-import xadmin
-from .models import *
-
 __author__ = 'weimin'
 __date__ = '2018/3/3 0003 18:39'
 
+import xadmin
+from xadmin import views
+from xadmin.plugins.auth import UserAdmin
+from xadmin.layout import Fieldset, Main, Side, Row
 
-class UserProfileAdmin(object):
-    list_display = ('employee_name', 'mobile', 'position', 'section', 'superior')
+from django.utils.translation import ugettext as _
+
+from .models import *
 
 
 class PositionAdmin(object):
-    list_display = ('name', 'describe', 'level',)
-    search_fields = ('name', 'describe', 'level',)
-    list_filter = ('name', 'describe', 'level',)
-    model_icon = 'fa fa-address-book-o'
+    list_display = ('name', 'describe', )
+    search_fields = ('name', 'describe', )
+    list_filter = ('name', 'describe', )
+    # model_icon = 'fa fa-address-book-o'
 
 
 class SectionAdmin(object):
     pass
 
 
-# from django.contrib.auth.models import User
-xadmin.site.unregister(UserProfile)
+class BaseSetting(object):
+    enable_themes = True
+    use_bootswatch = True
 
-xadmin.site.register(UserProfile, UserProfileAdmin)
+
+class GlobalSettings(object):
+    site_title = "观正会计师事务所"
+    site_footer = "奇维科技"
+    menu_style = "accordion"
+
+
+# from django.contrib.auth.models import Userd
+# xadmin.site.unregister(UserProfile)
+# xadmin.site.register(UserProfile, UserProfileAdmin)
 xadmin.site.register(Position, PositionAdmin)
 xadmin.site.register(Section, SectionAdmin)
+
+xadmin.site.register(views.BaseAdminView, BaseSetting)
+xadmin.site.register(views.CommAdminView, GlobalSettings)

@@ -262,7 +262,7 @@ class ChangeAccountPasswordView(ChangePasswordView):
             return self.get_response()
 
 
-user_model = settings.AUTH_USER_MODEL.lower().replace('.','/')
+user_model = settings.AUTH_USER_MODEL.lower().replace('.', '/')
 site.register_view(r'^%s/(.+)/password/$' % user_model,
                    ChangePasswordView, name='user_change_password')
 site.register_view(r'^account/password/$', ChangeAccountPasswordView,

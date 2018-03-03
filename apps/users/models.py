@@ -35,7 +35,7 @@ class UserProfile(AbstractUser):
 class Position(models.Model):
     name = models.CharField(max_length=50, verbose_name=u"职位名称", null=False)
     describe = models.TextField(verbose_name="职位描述", null=True, default="", blank=True)
-    level = models.IntegerField(verbose_name=u"级别", null=True, blank=True)
+    # level = models.IntegerField(verbose_name="级别", default="", blank=True)
 
     class Meta:
         verbose_name = u"职位"
