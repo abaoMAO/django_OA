@@ -16,6 +16,10 @@ class PositionAdmin(object):
     search_fields = ('name', 'describe', )
     list_filter = ('name', 'describe', )
     # model_icon = 'fa fa-address-book-o'
+    # ordering = []
+    # readonly_fields = ['']
+    # exclude = ['']
+    # relfield_style = 'fk-ajax'
 
 
 class SectionAdmin(object):

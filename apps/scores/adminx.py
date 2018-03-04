@@ -11,8 +11,13 @@ from .models import *
 #     menu_style = "accordion"
 
 
+class QuestionInline(object):
+    model = Question
+    extra = 0
+
+
 class QuestionnaireAdmin(object):
-    pass
+    inlines = [QuestionInline]
 
 
 class QuestionAdmin(object):
