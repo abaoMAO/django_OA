@@ -2,6 +2,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 # Create your models here.
+from django.utils.encoding import smart_str
 
 
 class UserProfile(AbstractUser):
@@ -12,6 +13,9 @@ class UserProfile(AbstractUser):
     class Meta:
         verbose_name = "员工信息"
         verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return smart_str(self.last_name + self.first_name+"  " + self.username)
 
 
 class Department(models.Model):

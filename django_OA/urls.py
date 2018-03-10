@@ -17,6 +17,7 @@ from django.conf.urls import url, include
 from django.urls import path
 from django.views.generic import TemplateView
 import xadmin
+from score.views import ScoreView, AnswerSheetView
 from user.views import IndexView, LoginView, RegisterView
 
 urlpatterns = [
@@ -26,5 +27,8 @@ urlpatterns = [
     # 注册登陆
     # url(r'^register/$', RegisterView.as_view(), name="register"),
     url(r'^login/$', LoginView.as_view(), name="login"),
+
+    url(r'^score/$', ScoreView.as_view(), name="score"),
+    url(r'^answer_sheet/(?P<as_code>.*)/$', AnswerSheetView.as_view(), name="answer_sheet"),
 
 ]

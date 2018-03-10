@@ -5,8 +5,15 @@
     <meta charset="utf-8">
     <title>首页</title>
 </head>
+<script>
+    function btnAction(){
+
+    }
+</script>
 <body>
-<div id="app"></div>
-{% render_bundle 'app' %}
+<div id="app">
+   <a href="{% url 'score' %}" onclick="checkScore()"><button>绩效考核统计</button></a>
+    <a href="{% url 'login' %}" onclick="checkUser()"><button>登陆</button></a>
+</div>
 </body>
 </html>
