@@ -25,19 +25,19 @@ class MainDashboard(object):
     ]
 
 
-@xadmin.sites.register(views.BaseAdminView)
-class BaseSetting(object):
-    enable_themes = True
-    use_bootswatch = True
+# @xadmin.sites.register(views.BaseAdminView)
+# class BaseSetting(object):
+#     enable_themes = True
+#     use_bootswatch = True
 
 
-@xadmin.sites.register(views.CommAdminView)
-class GlobalSetting(object):
-    global_search_models = [Host, IDC]
-    global_models_icon = {
-        Host: "fa fa-laptop", IDC: "fa fa-cloud"
-    }
-    menu_style = 'default'  # 'accordion'
+# @xadmin.sites.register(views.CommAdminView)
+# class GlobalSetting(object):
+#     global_search_models = [Host, IDC]
+#     global_models_icon = {
+#         Host: "fa fa-laptop", IDC: "fa fa-cloud"
+#     }
+#     menu_style = 'default'  # 'accordion'
 
 
 class MaintainInline(object):
