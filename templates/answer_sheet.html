@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>评分</title>
+</head>
+<body>
+    <form id="answer_sheet" method="post" action="{% url 'answer_sheet' answer_sheet.id %}" autocomplete="off">
+{#    <div class="registerDiv">#}
+{#    	<div class="registerErrorMessageDiv">#}
+{#		    <div class="alert alert-danger" role="alert">#}
+{#		        <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>#}
+{#		  	    <span class="errorMessage">#}
+{#                    {% for key,error in register_form.errors.items %}#}
+{#                        {{ error }}#}
+{#                    {% endfor %}#}
+{#                    {{ msg }}#}
+{#                </span>#}
+{#		    </div>#}
+{#	    </div>#}
+    <table align="center" class="answer_sheetTable">
+        <tbody>
+        <tr>
+            <td class="answer_sheet">{{ answer_sheet }}</td>
+            <td></td>
+        </tr>
+        {% for question in questions %}
+        <tr>
+            <td class="question_type">{{ question.question_type}}</td>
+            <td class="question_content">{{ question.question_content}}</td>
+            <td class="full_score">{{ question.full_score}}</td>
+            <td class="score">
+                <input placeholder="分数不得超过最高分" name="score" id="score" value="">
+            </td>
+        </tr>
+        {% endfor %}
+{#        <tr>#}
+{#            <td class="registerTableRightTD">{% for key,error in register_form.errors.items %}{{ key }}{{ "是必填项" }}{% endfor %}{{ msg }}</td>#}
+{#        </tr>#}
+        <tr>
+            <td class="asButtonTD" colspan="2">
+                <a href="#nowhere" onclick="checkUser()"><button>提   交</button></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+        {% csrf_token %}
+    </div>
+    </form>
+</body>
+</html>

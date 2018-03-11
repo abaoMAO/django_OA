@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绩效统计</title>
+</head>
+<body>
+    {% for answer_sheet in answer_sheets %}
+            <a href="{% url 'answer_sheet' answer_sheet.id %}" onclick="checkScore()"><button>{{ answer_sheets }}</button></a>
+    {% endfor %}
+</body>
+</html>

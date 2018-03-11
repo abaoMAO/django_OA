@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+</head>
+<body>
+    <form class="registerForm" method="post" action="{% url 'register' %}" autocomplete="off">
+        <div class="register_acount_text">用户注册</div>
+        <div class="registerInput " >
+            <span class="registerInputIcon ">
+                <span class=" glyphicon glyphicon-user"></span>
+            </span>
+            <input id="username" name="username" placeholder="姓名全拼" type="text">
+        </div>
+            <div class="loginInput " >
+                <span class="loginInputIcon ">
+                    <span class=" glyphicon glyphicon-lock"></span>
+                </span>
+                <input id="password" name="password" type="password" placeholder="密码">
+                <input id="repeatpassword" name="repeatpassword" type="password" placeholder="密码">
+                <input id="email" name="email" placeholder="电子邮箱" type="text">
+            </div>
+            <span class="text-danger">只是测试样式</span><br><br>
+{#            <div>#}
+{#                <a class="notImplementLink" href="{% url 'forget_pwd' %}">忘记登录密码</a>#}
+{#                <a class="pull-right" href="{% url 'register' %}">免费注册</a>#}
+{#            </div>#}
+            <div style="margin-top:20px">
+                <button class="btn btn-block redButton" type="submit">注册</button>
+            </div>
+    </form>
+        <table align="center" class="registerTable">
+        <tbody>
+        <tr>
+            <td class="registerTip registerTableLeftTD">设置会员名</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="registerTableLeftTD">注册邮箱</td>
+            <td class="registerTableRightTD"><input placeholder="注册邮箱一旦设置成功，无法修改" name="email" id="email" value="{{ register_form.email.value }}"> </td>
+        </tr>
+        <tr>
+            <td class="registerTip registerTableLeftTD">设置登陆密码</td>
+            <td class="registerTableRightTD">登陆时验证，保护账号信息</td>
+        </tr>
+        <tr>
+            <td class="registerTableLeftTD">登陆密码</td>
+            <td class="registerTableRightTD"><input type="password" placeholder="设置你的登陆密码" name="password" id="password" value="{{ register_form.password.value }}"> </td>
+        </tr>
+        <tr>
+            <td class="registerTableLeftTD">密码确认</td>
+            <td class="registerTableRightTD"><input type="password" placeholder="请再次输入你的密码" name="repeatpassword" id="repeatpassword" value="{{ register_form.password.value }}"> </td>
+        </tr>
+        <tr>
+            <td class="registerTableLeftTD">验证码</td>
+            <td class="registerTableRightTD" >{{ register_form.captcha }}</td>
+        </tr>
+{#        <tr>#}
+{#            <td class="registerTableRightTD">{% for key,error in register_form.errors.items %}{{ key }}{{ "是必填项" }}{% endfor %}{{ msg }}</td>#}
+{#        </tr>#}
+        <tr>
+            <td class="registerButtonTD" colspan="2">
+                <a href="#nowhere" onclick="checkUser()"><button>提   交</button></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+</html>

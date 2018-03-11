@@ -64,7 +64,7 @@
           $(this).find('button').click(function(e){
             var now = new Date()
               , value = now.getHours() + ':' + now.getMinutes();
-            el.attr('value', value);
+            el.val(value);
           })
         })
       }
