@@ -1,9 +1,7 @@
-from django.shortcuts import render
-
 # Create your views here.
+from django.shortcuts import render
 from django.views import View
-
-from score.models import AnswerSheet
+from .models import AnswerSheet
 
 
 class ScoreView(View):
@@ -31,6 +29,17 @@ class AnswerSheetView(View):
                 "answer_sheet": answer_sheet,
                 "questionnaire": questionnaire,
                 "questions": questions,
+            })
+        else:
+            return render(request, "user_login.html")
+
+    def post(self, request, as_code):
+        user = request.user
+        if user.is_authenticated:
+
+            answer_sheets = AnswerSheet.objects.filter(judge=user.id).exclude(is_active=False)
+            return render(request, "score.html", {
+                "answer_sheets": answer_sheets,
             })
         else:
             return render(request, "user_login.html")

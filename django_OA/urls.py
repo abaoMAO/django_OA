@@ -15,10 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.urls import path
-from django.views.generic import TemplateView
+# from django.views.generic import TemplateView
 import xadmin
-from score.views import ScoreView, AnswerSheetView
-from user.views import IndexView, LoginView, RegisterView
+from performance.views import ScoreView, AnswerSheetView
+from user.views import IndexView, LoginView
 
 urlpatterns = [
     path(r'xadmin/', xadmin.site.urls),

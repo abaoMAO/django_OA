@@ -1,8 +1,8 @@
 __author__ = 'weimin'
-__date__ = '2018/3/10 0010 22:36'
+__date__ = '2018/3/11 0011 9:56'
 
 import xadmin
-from score.models import Question, Questionnaire, AnswerSheet, Answer
+from .models import Question, Questionnaire, AnswerSheet, Answer, AssessmentRelationship
 
 
 class QuestionInline(object):
@@ -13,6 +13,11 @@ class QuestionInline(object):
 class AnswerInline(object):
     model = Answer
     extra = 0
+
+
+@xadmin.sites.register(AssessmentRelationship)
+class AssessmentRelationshipAdmin(object):
+    pass
 
 
 @xadmin.sites.register(Questionnaire)

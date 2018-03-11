@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class ScoreConfig(AppConfig):
-    name = 'score'
+class PerformanceConfig(AppConfig):
+    name = 'performance'
     verbose_name = "绩效管理"
