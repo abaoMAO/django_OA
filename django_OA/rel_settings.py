@@ -27,7 +27,7 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'extra_apps'))
 SECRET_KEY = '=tk!fd#bw623l6!yvrqknt7faj6o2ag=i3cy$tiwgn-q65io@#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -92,9 +92,9 @@ WSGI_APPLICATION = 'django_OA.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': "OASystem",
-        'USER': "root",
-        'PASSWORD': "admin123",
+        'NAME': "oasystem",
+        'USER': "weimin",
+        'PASSWORD': "Lwm1123581321",
         'HOST': "127.0.0.1",
     }
 }
